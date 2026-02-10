@@ -757,7 +757,7 @@ void Kitap_Duzenleme(Kitap** head,char* ISBN_eski,char* yeni_kitap_adi,int yeni_
         Kitap* kontrol_kitap = *head;
         while (kontrol_kitap != NULL && yeni_isbn_kullanilabilir) {
             if (kontrol_kitap != duzenlenecek_kitap && strcmp(kontrol_kitap->ISBN, yeni_ISBN) == 0) {
-                printf("Hata.\n", yeni_ISBN);
+                printf("Hata: %s zaten mevcut.\n", yeni_ISBN);
                 yeni_isbn_kullanilabilir = 0; 
             }
             if (yeni_isbn_kullanilabilir) { 
@@ -1381,7 +1381,7 @@ void Dosyadan_Kitap_Oku(Kitap** head, const char* Dosya_Adi1_Kitaplar, const cha
                             }
                             o_iter->durum = strdup(durum_temp);
                             if (o_iter->durum == NULL) {
-                                printf("HATA\n", etiket_temp);
+                                printf("HATA: %s okunurken hata olustu.\n", etiket_temp);
                             }
                         }
                         if (!ornek_bulundu_flag) { 
@@ -2063,7 +2063,7 @@ void Ogrenci_Menusu(void* p) {
                 break;
             case 5:
                 printf("Alinacak kitabin ISBN numarasini giriniz: ");
-                fgets(ISBN, 20, stdin);
+                fgets(ISBN, 14, stdin);
                 ISBN[strcspn(ISBN, "\n")] = 0;
                 printf("Alicak ogrencinin numarasini giriniz: ");
                 fgets(no, 10, stdin);
